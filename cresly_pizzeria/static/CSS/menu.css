@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@500&display=swap');
+:root{
+    --color-primario: #AC1F33;
+    --color-primario-hover: #5f0c19;
+    --color-secundario: #009640;
+    --fuente-principal: 'Reem Kufi Fun', sans-serif;
+  }
+
+
+
+  .card {
+    transition: transform 0.3s ease; /* Transición suave para el efecto */
+    max-height: 300px; /* Ajusta la altura máxima según sea necesario */
+    overflow: hidden; /* Oculta el contenido que desborda */
+    margin-bottom: 1rem; /* Ajusta el margen inferior si es necesario */
+    
+  }
+
+  .card:hover {
+      transform: scale(1.05); /* Aumenta el tamaño de la tarjeta en un 5% al pasar el cursor */
+  cursor: pointer; 
+    cursor: pointer;
+  }
+
+
+  .card-title  {
+    font-family: var(--fuente-principal);
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card-descripcion {
+    font-family: var(--fuente-principal);
+
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card-precio{
+    font-family: var(--fuente-principal);
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    color: var(--color-secundario)
+  }
+
+  .card-body {
+    padding: 1rem; /* Reduce el padding interno de la tarjeta */
+  }
+  
+  .card-img-top {
+    height: 150px; /* Ajusta la altura de la imagen si es necesario */
+    object-fit: cover; /* Asegúrate de que la imagen se ajuste sin deformar */
+  }
+  
+.container {
+  max-width: 1200px; /* Ajusta el ancho máximo según tus necesidades */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 0 15px; /* Agrega un poco de relleno horizontal */
+}
+
+/* Estilo para la columna fija */
+.col-2 {
+  position: sticky;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  top: 200px; /* Mantén la columna en la parte superior cuando se hace scroll */
+  height: 100%; /* Altura total del viewport para mantener la columna visible */
+  overflow-y: auto; /* Agrega scroll vertical si el contenido es más alto que la altura definida */
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2); /* Sombra */
+
+}
+
+/* Estilo para la columna de contenido */
+.col-10 {
+  padding-left: 20px; /* Agrega un poco de relleno a la izquierda para evitar que el contenido se superponga */
+}

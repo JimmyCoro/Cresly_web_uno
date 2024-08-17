@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block styles%}
+<link rel="stylesheet" href="{% static 'CSS/inicio.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+  <div id="carouselExample" data-bs-ride="carousel" class="carousel slide">
+    <div class="carousel-inner">
+        <!-- Primer ítem del carrusel con un video -->
+        <div class="carousel-item active">
+            <video class="d-block w-100" autoplay loop muted>
+                <source src="{% static 'VIDEO/portada3.mp4' %}" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <div class="carousel-caption d-none d-md-block">
+                <a href="#" class= "btn-ordenar">
+                  <img src="{% static 'IMG/inicio/ordenaya1.png' %}" alt="" width="200px">
+                </a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <video class="d-block w-100" autoplay loop muted>
+                <source src="{% static 'VIDEO/portada2.mp4' %}" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <div class="carousel-caption d-none d-md-block">
+              <a href="#">
+                <img src="{% static 'IMG/inicio/ordenaya1.png' %}" alt="" width="200px">
+              </a>
+            </div>
+        </div>
+        <!-- Puedes agregar más ítems de carrusel aquí -->
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="row">
+
+  
+
+
+</div>
+
+
+</div>
+
+<div class="row">
+
+
+
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar Jugador</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{% url 'save_cliente' %}" method="post">
+              {% csrf_token %}
+            <div class="modal-body">
+      
+                <table>
+                  {{formulario.as_table}}
+      
+                </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+</div>    
+{%endblock%}

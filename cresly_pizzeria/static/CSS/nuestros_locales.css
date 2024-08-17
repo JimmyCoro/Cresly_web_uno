@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@500&display=swap');
+:root{
+    --color-primario: #AC1F33;
+    --color-primario-hover: #5f0c19;
+    --color-secundario: #009640;
+    --fuente-principal: 'Reem Kufi Fun', sans-serif;
+  }
+.carousel-item img {
+    height: 300px; 
+    object-fit: cover; 
+}
+
+.icono{
+    color: var(--color-primario-hover);
+}
+
+.columna1, .columna2{
+    
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2); /* Sombra */
+    border-radius: 15px;
+
+}

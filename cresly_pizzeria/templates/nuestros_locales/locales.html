@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'CSS/nuestros_locales.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-6 columna1">
+            <div class="card mt-5" >
+                <div id="carouselCentro" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'IMG/Centro/centro1.jpg' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'IMG/Centro/centro2.jpg' %}" class="d-block w-100" alt="...">
+                        </div>
+    
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselCentro" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselCentro" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Cresly Centro Historico</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-geo-alt-fill me-2 icono"></i>
+                        <span>Av. Remigio Crespo y Alfonso Borrero</span>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-telephone-fill me-2 icono"></i>
+                        <span>Teléfono: +593 99 077 3270</span>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-clock-fill me-2 icono"></i>
+                        <span>Horario: Lunes a Domingo 11:00 - 00:00</span>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+        </div>
+
+        <div class="col-lg-6 columna2">
+            <div class="card mt-5 mb-5">
+                <div id="carouselRemigio" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="{% static 'IMG/Remigio/remigio1.jpg' %}" class="d-block w-100" alt="Imagen 1">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{% static 'IMG/Remigio/remigio2.jpg' %}" class="d-block w-100" alt="Imagen 2">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="{% static 'IMG/Remigio/remigio4.jpg' %}" class="d-block w-100" alt="Imagen 3">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                  
+                <div class="card-body">
+                    <h5 class="card-title">Cresly Remigio Crespo</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-geo-alt-fill me-2 icono"></i>
+                        <span>Av. Remigio Crespo y Alfonso Borrero</span>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-telephone-fill me-2 icono"></i>
+                        <span>Teléfono: +593 99 077 3270</span>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-clock-fill me-2 icono"></i>
+                        <span>Horario: Lunes a Domingo 11:00 - 00:00</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+        
+            </div>
+
+            
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
