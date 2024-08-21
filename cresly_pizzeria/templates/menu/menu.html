@@ -46,7 +46,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="producto_id" value="{{ producto.id }}">
                 <div class="modal-body">
-                  {{ pizza_form.as_p }}  <!-- Aquí se muestra el formulario de Pizza -->
+                  {{ pizza_form.as_p }}  
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -57,7 +57,6 @@
           </div>
         </div>
 
-        <!-- Modal para productos de la categoría "Alitas" -->
         {% elif categoria.nombre_categoria == "Alitas" %}
         <div class="modal fade" id="detailsModal{{ producto.id }}" tabindex="-1" aria-labelledby="detailsModalLabel{{ producto.id }}" aria-hidden="true">
           <div class="modal-dialog">
@@ -70,7 +69,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="producto_id" value="{{ producto.id }}">
                 <div class="modal-body">
-                  {{ alitas_form.as_p }}  <!-- Aquí se muestra el formulario de Alitas -->
+                  {{ alitas_form.as_p }}  <
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -81,7 +80,6 @@
           </div>
         </div>
     
-                <!-- Modal para productos de la categoría "Alitas" -->
         {% elif categoria.nombre_categoria == "Alitas" %}
         <div class="modal fade" id="detailsModal{{ producto.id }}" tabindex="-1" aria-labelledby="detailsModalLabel{{ producto.id }}" aria-hidden="true">
           <div class="modal-dialog">

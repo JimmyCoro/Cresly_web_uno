@@ -34,7 +34,7 @@ class Pizza(models.Model):
         ('CHO', 'Chorizo'),
     ]
     
-    producto = models.OneToOneField(Producto, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     sabor_1 = models.CharField(max_length=3, choices=SABOR_CHOICES)
     sabor_2 = models.CharField(max_length=3, choices=SABOR_CHOICES)
 
@@ -50,7 +50,7 @@ class Alitas(models.Model):
         ('PIN', 'Piña'),
     ]
     
-    producto = models.OneToOneField(Producto, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     sabor_1 = models.CharField(max_length=3, choices=SABOR_CHOICES)
     sabor_2 = models.CharField(max_length=3, choices=SABOR_CHOICES)
 
@@ -68,7 +68,7 @@ class Bebida(models.Model):
         ('INK', 'Inka'),
     ]
     
-    producto = models.OneToOneField(Producto, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     sabor = models.CharField(max_length=3, choices=SABOR_CHOICES)
 
     def __str__(self):

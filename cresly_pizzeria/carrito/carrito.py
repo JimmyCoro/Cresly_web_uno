@@ -1,50 +1,54 @@
+from django.conf import settings
+from menu.models import Producto
+
 class Carrito:
     def __init__(self, request):
-        self.request=request
-        self.session=request.session
-        carrito=self.session.get("carrito")
+        self.session = request.session
+        carrito = self.session.get(settings.CART_SESSION_ID)
         if not carrito:
-            carrito=self.session["carrito"]={}
+            # Guardar un carrito vacío en la sesión
+            carrito = self.session[settings.CART_SESSION_ID] = {}
+        self.carrito = carrito
+
+    def agregar(self, producto, cantidad=1, actualizar_cantidad=False):
+        producto_id = str(producto.id)
+        if producto_id not in self.carrito:
+            self.carrito[producto_id] = {'cantidad': 0, 'precio': str(producto.precio)}
+
+        if actualizar_cantidad:
+            self.carrito[producto_id]['cantidad'] = cantidad
         else:
-            self.carrito=carrito
-            
-            
-    def agregar(self, producto):
-        if(str(producto.id) not in self.carrito.keys()):
-            self.carrito[producto.id]={
-                "producto_id":producto.id,
-                "nombre":producto.nombre,
-                "precio":str(producto.precio),
-                "cantidad":1,
-                "imagen":producto.imagen.url
-            }
-        else:
-            for key, value in self.carrito.items():
-                if key==str(producto.id):
-                    value["cantidad"]=value["cantidad"]+1
-                    break  
-        self.guardar_carrito()
-        
-    def guardar_carrito(self):
-        self.session["carrito"]=self.carrito
-        self.session.modified=True 
-        
+            self.carrito[producto_id]['cantidad'] += cantidad
+
+        self.guardar()
+
+    def guardar(self):
+        self.session[settings.CART_SESSION_ID] = self.carrito
+        self.session.modified = True
+
     def eliminar(self, producto):
-        producto.id=str(producto.id)
-        if producto.id in self.carrito:
-            del self.carrito[producto.id]
-            self.guardar_carrito()
-            
-    
-    def restar_producto(self, producto):
-        for key, value in self.carrito.items():
-            if key==str(producto.id):
-                value["cantidad"]=value["cantidad"]-1
-                if value["cantidad"]<1:
-                    self.eliminar(producto)
-                break  
-        self.guardar_carrito
-        
-    def vaciar(self):
-        self.session["carrito"]={}
-        self.session.modified=True
+        producto_id = str(producto.id)
+        if producto_id in self.carrito:
+            del self.carrito[producto_id]
+            self.guardar()
+
+    def limpiar(self):
+        self.session[settings.CART_SESSION_ID] = {}
+        self.session.modified = True
+
+    def __iter__(self):
+        producto_ids = self.carrito.keys()
+        productos = Producto.objects.filter(id__in=producto_ids)
+        for producto in productos:
+            self.carrito[str(producto.id)]['producto'] = producto
+
+        for item in self.carrito.values():
+            item['precio'] = float(item['precio'])
+            item['total_precio'] = item['precio'] * item['cantidad']
+            yield item
+
+    def __len__(self):
+        return sum(item['cantidad'] for item in self.carrito.values())
+
+    def get_total_precio(self):
+        return sum(float(item['precio']) * item['cantidad'] for item in self.carrito.values())
