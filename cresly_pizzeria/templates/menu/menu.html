@@ -33,101 +33,45 @@
           </div>
         </div>
 
-        <!-- Modal para productos de la categoría "Pizzas" -->
-        {% if categoria.nombre_categoria == "Pizzas" %}
+        <!-- Modal para cada producto -->
         <div class="modal fade" id="detailsModal{{ producto.id }}" tabindex="-1" aria-labelledby="detailsModalLabel{{ producto.id }}" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg"> <!-- Cambiado a modal-lg para un modal más grande -->
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel{{ producto.id }}">Selecciona los sabores para {{ producto.nombre_producto }}</h5>
+                <h5 class="modal-title" id="detailsModalLabel{{ producto.id }}">Detalles de {{ producto.nombre_producto }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <form method="post" action="{% url 'menu' %}">
-                {% csrf_token %}
-                <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                <div class="modal-body">
-                  {{ pizza_form.as_p }}  
+              <div class="modal-body">
+                <div class="row">
+                  <!-- Columna para la imagen del producto -->
+                  <div class="col-md-6">
+                    <img src="{{ producto.foto.url }}" class="img-fluid" alt="{{ producto.nombre_producto }}">
+                  </div>
+                  <!-- Columna para el formulario y detalles -->
+                  <div class="col-md-6">
+                    <p>{{ producto.descripcion }}</p>
+                    <h5 class="card-precio">${{ producto.precio }}</h5>
+                    <form method="post" action="{% url 'menu' %}">
+                      {% csrf_token %}
+                      <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                      {% if categoria.nombre_categoria == "Pizzas" %}
+                        {{ pizza_form.as_p }}
+                      {% elif categoria.nombre_categoria == "Alitas" %}
+                        {{ alitas_form.as_p }}
+                      {% elif categoria.nombre_categoria == "Bebidas" %}
+                        {{ bebida_form.as_p }}
+                      {% endif %}
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="submit" class="btn btn-primary">Agregar al carrito</button>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
-
-        {% elif categoria.nombre_categoria == "Alitas" %}
-        <div class="modal fade" id="detailsModal{{ producto.id }}" tabindex="-1" aria-labelledby="detailsModalLabel{{ producto.id }}" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel{{ producto.id }}">Selecciona los detalles para {{ producto.nombre_producto }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form method="post" action="{% url 'menu' %}">
-                {% csrf_token %}
-                <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                <div class="modal-body">
-                  {{ alitas_form.as_p }}  
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="submit" class="btn btn-primary">Agregar al carrito</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-    
-        {% elif categoria.nombre_categoria == "Alitas" %}
-        <div class="modal fade" id="detailsModal{{ producto.id }}" tabindex="-1" aria-labelledby="detailsModalLabel{{ producto.id }}" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel{{ producto.id }}">Selecciona los detalles para {{ producto.nombre_producto }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form method="post" action="{% url 'menu' %}">
-                {% csrf_token %}
-                <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                <div class="modal-body">
-                  {{ alitas_form.as_p }}  <!-- Aquí se muestra el formulario de Alitas -->
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="submit" class="btn btn-primary">Agregar al carrito</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal para productos de la categoría "Alitas" -->
-        {% elif categoria.nombre_categoria == "Bebidas" %}
-        <div class="modal fade" id="detailsModal{{ producto.id }}" tabindex="-1" aria-labelledby="detailsModalLabel{{ producto.id }}" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel{{ producto.id }}">Selecciona los detalles para {{ producto.nombre_producto }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <form method="post" action="{% url 'menu' %}">
-                {% csrf_token %}
-                <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                <div class="modal-body">
-                  {{ bebida_form.as_p }}  <!-- Aquí se muestra el formulario de Alitas -->
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="submit" class="btn btn-primary">Agregar al carrito</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        {% endif %}
-
         {% endfor %}
       </div>
       {% endfor %}

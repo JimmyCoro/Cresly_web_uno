@@ -9,15 +9,15 @@
 
 
   .card {
-    transition: transform 0.3s ease; /* Transición suave para el efecto */
-    max-height: 300px; /* Ajusta la altura máxima según sea necesario */
-    overflow: hidden; /* Oculta el contenido que desborda */
-    margin-bottom: 1rem; /* Ajusta el margen inferior si es necesario */
+    transition: transform 0.3s ease; 
+    max-height: 300px; 
+    overflow: hidden; 
+    margin-bottom: 1rem; 
     
   }
 
   .card:hover {
-      transform: scale(1.05); /* Aumenta el tamaño de la tarjeta en un 5% al pasar el cursor */
+      transform: scale(1.05); 
   cursor: pointer; 
     cursor: pointer;
   }
@@ -48,34 +48,48 @@
   }
 
   .card-body {
-    padding: 1rem; /* Reduce el padding interno de la tarjeta */
+    padding: 1rem; 
   }
   
   .card-img-top {
-    height: 150px; /* Ajusta la altura de la imagen si es necesario */
-    object-fit: cover; /* Asegúrate de que la imagen se ajuste sin deformar */
+    height: 150px; 
+    object-fit: cover; 
+  }
+  .modal-content {
+    border-radius: 10px; /* Redondea las esquinas del modal */
+  }
+  
+  .product-card img {
+    object-fit: cover;
+    height: 200px; /* Ajusta la altura de la imagen dentro de la tarjeta */
+  }
+  
+  .img-fluid {
+    max-height: 300px; /* Controla la altura máxima de la imagen dentro del modal */
+    margin-bottom: 20px; /* Espacio entre la imagen y el formulario */
   }
   
 .container {
-  max-width: 1200px; /* Ajusta el ancho máximo según tus necesidades */
-  margin: 0 auto; /* Centra el contenedor horizontalmente */
-  padding: 0 15px; /* Agrega un poco de relleno horizontal */
+  max-width: 1200px;
+  margin: 0 auto; 
+  padding: 0 15px; 
 }
 
-/* Estilo para la columna fija */
 .col-2 {
   position: sticky;
   padding-top: 20px;
   padding-bottom: 20px;
-  top: 200px; /* Mantén la columna en la parte superior cuando se hace scroll */
-  height: 100%; /* Altura total del viewport para mantener la columna visible */
-  overflow-y: auto; /* Agrega scroll vertical si el contenido es más alto que la altura definida */
+  top: 200px; 
+  height: 100%; 
+  overflow-y: auto; 
   border-radius: 20px;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2); /* Sombra */
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2); 
+
+  
 
 }
 
-/* Estilo para la columna de contenido */
+
 .col-10 {
-  padding-left: 20px; /* Agrega un poco de relleno a la izquierda para evitar que el contenido se superponga */
+  padding-left: 20px; 
 }

@@ -6,7 +6,7 @@ class ClienteForm(forms.ModelForm):
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Contraseña',
-            'data-icon': 'bi-lock'  # Añadir un atributo personalizado para el icono
+            'data-icon': 'bi-lock'  
         })
     )
     
@@ -14,7 +14,7 @@ class ClienteForm(forms.ModelForm):
         widget=forms.EmailInput(attrs={
             'class': 'form-control',
             'placeholder': 'Correo electrónico',
-            'data-icon': 'bi-envelope'  # Icono para correo electrónico
+            'data-icon': 'bi-envelope'  
         })
     )
     
@@ -22,7 +22,7 @@ class ClienteForm(forms.ModelForm):
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Nombre',
-            'data-icon': 'bi-person'  # Icono para nombre
+            'data-icon': 'bi-person'  
         })
     )
     
@@ -30,7 +30,7 @@ class ClienteForm(forms.ModelForm):
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Apellido',
-            'data-icon': 'bi-person'  # Icono para apellido
+            'data-icon': 'bi-person'  
         })
     )
 
