@@ -16,40 +16,24 @@ def menu(request):
         if producto.categoria.nombre_categoria == 'Pizzas':
             form = PizzaForm(request.POST)
             if form.is_valid():
-                pizza = form.save(commit=False)
-                pizza.producto = producto
-                pizza.save()
-                
-                # Agregar al carrito con detalles adicionales si es necesario
-                carrito.agregar(producto=producto, cantidad=1, actualizar_cantidad=False)
-                
+                pizza_form = form.cleaned_data
+                carrito.agregar(producto=producto, cantidad=1, sabor_1=pizza_form['sabor_1'], sabor_2=pizza_form['sabor_2'])
                 return redirect('menu')
             
         elif producto.categoria.nombre_categoria == 'Alitas':
             form = AlitaForm(request.POST)
             if form.is_valid():
-                alitas = form.save(commit=False)
-                alitas.producto = producto
-                alitas.save()
-
-                # Agregar al carrito con detalles adicionales si es necesario
-                carrito.agregar(producto=producto, cantidad=1, actualizar_cantidad=False)
-                
+                alita_form = form.cleaned_data
+                carrito.agregar(producto=producto, cantidad=1, sabor_1=alita_form['sabor_1'], sabor_2=alita_form['sabor_2'])
                 return redirect('menu')
         
         elif producto.categoria.nombre_categoria == 'Bebidas':
             form = BebidaForm(request.POST)
             if form.is_valid():
-                bebida = form.save(commit=False)
-                bebida.producto = producto
-                bebida.save()
-
-                # Agregar al carrito con detalles adicionales si es necesario
-                carrito.agregar(producto=producto, cantidad=1, actualizar_cantidad=False)
-                
+                bebida_form = form.cleaned_data
+                carrito.agregar(producto=producto, cantidad=1, sabor_1=bebida_form['sabor'])
                 return redirect('menu')
             
-    # Para mostrar el formulario en el modal, debes asegurarte de incluir el formulario adecuado en el contexto
     context['pizza_form'] = PizzaForm()
     context['alitas_form'] = AlitaForm()
     context['bebida_form'] = BebidaForm()

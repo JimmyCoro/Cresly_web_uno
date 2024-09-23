@@ -1,0 +1,115 @@
+<!-- Modal de autenticación -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md"> <!-- Cambiamos a 'modal-lg' para hacerlo más ancho -->
+        <div class="modal-content">
+            <div class="modal-header text-white ">
+                <h5 class="modal-title" id="authModalLabel">Iniciar sesión / Registrarse</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Nav tabs para alternar entre Iniciar sesión y Registrarse -->
+                <ul class="nav nav-pills mb-3 justify-content-center" id="authTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {% if not register_form %}active{% endif %}" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginFormContainer" type="button" role="tab" aria-controls="login" aria-selected="true">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {% if register_form %}active{% endif %}" id="register-tab" data-bs-toggle="tab" data-bs-target="#registerFormContainer" type="button" role="tab" aria-controls="register" aria-selected="false">
+                            <i class="fas fa-user-plus"></i> Registrarse
+                        </button>
+                    </li>
+                </ul>
+                
+                <!-- Contenido del formulario -->
+                <div class="tab-content">
+                    <!-- Login Form -->
+                    <div class="tab-pane fade {% if not register_form %}show active{% endif %}" id="loginFormContainer" role="tabpanel" aria-labelledby="login-tab">
+                        <form id="loginForm" method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-envelope"></i>                                    </span>
+                                    {{ login_form.username }} <!-- Campo de correo electrónico -->
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-lock"></i> <!-- Icono de contraseña -->
+                                    </span>
+                                    {{ login_form.password }} <!-- Campo de contraseña -->
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-block mt-3">
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                                </button>
+                            </div>
+                        </form>
+                        <div id="login-errors" class="text-danger"></div> <!-- Donde se mostrarán los errores -->
+                    </div>
+
+                    <!-- Register Form -->
+                    <div class="tab-pane fade {% if register_form %}show active{% endif %}" id="registerFormContainer" role="tabpanel" aria-labelledby="register-tab">
+                        <form id="registerForm" method="post" action="{% url 'register' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-envelope"></i> <!-- Icono de correo -->
+                                    </span>
+                                    {{ register_form.email }} <!-- Campo de correo electrónico -->
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user"></i> <!-- Icono de nombre -->
+                                    </span>
+                                    {{ register_form.first_name }} <!-- Campo de nombre -->
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user"></i> <!-- Icono de apellido -->
+                                    </span>
+                                    {{ register_form.last_name }} <!-- Campo de apellido -->
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-lock"></i> <!-- Icono de contraseña -->
+                                    </span>
+                                    {{ register_form.password1 }} <!-- Campo de contraseña -->
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-lock"></i> <!-- Icono de confirmar contraseña -->
+                                    </span>
+                                    {{ register_form.password2 }} <!-- Campo de confirmar contraseña -->
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success btn-block mt-3">
+                                    <i class="fas fa-user-plus"></i> Registrarse
+                                </button>
+                            </div>
+                        </form>
+                        <div id="register-errors" class="text-danger"></div> <!-- Donde se mostrarán los errores -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times"></i> Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

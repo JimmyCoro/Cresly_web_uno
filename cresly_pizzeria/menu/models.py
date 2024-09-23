@@ -26,17 +26,17 @@ class Producto(models.Model):
 
 class Pizza(models.Model):
     SABOR_CHOICES = [
-        ('TRC', 'Tres Carnes'),
-        ('CHA', 'Champiñones'),
-        ('HAW', 'Hawaiana'),
-        ('PEP', 'Pepperoni'),
-        ('TQ', 'Tres Quesos'),
-        ('CHO', 'Chorizo'),
+        ('Tres Carnes', 'Tres Carnes'),
+        ('Champiñones', 'Champiñones'),
+        ('Hawaiana', 'Hawaiana'),
+        ('Pepperoni', 'Pepperoni'),
+        ('Tres Quesos', 'Tres Quesos'),
+        ('Chorizo', 'Chorizo'),
     ]
     
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    sabor_1 = models.CharField(max_length=3, choices=SABOR_CHOICES)
-    sabor_2 = models.CharField(max_length=3, choices=SABOR_CHOICES)
+    sabor_1 = models.CharField(max_length=15, choices=SABOR_CHOICES)
+    sabor_2 = models.CharField(max_length=15, choices=SABOR_CHOICES)
 
     def __str__(self):
         return f"{self.sabor_1} / {self.sabor_2 if self.sabor_2 else ''}"
@@ -44,15 +44,15 @@ class Pizza(models.Model):
 class Alitas(models.Model):
     SABOR_CHOICES = [
         ('BBQ', 'BBQ'),
-        ('MYM', 'Miel y Mostaza'),
-        ('MAR', 'Macaruyá'),
-        ('BRS', 'Broster'),
-        ('PIN', 'Piña'),
+        ('Miel y Mostaza', 'Miel y Mostaza'),
+        ('Macaruyá', 'Macaruyá'),
+        ('Broster', 'Broster'),
+        ('Piña', 'Piña'),
     ]
     
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    sabor_1 = models.CharField(max_length=3, choices=SABOR_CHOICES)
-    sabor_2 = models.CharField(max_length=3, choices=SABOR_CHOICES)
+    sabor_1 = models.CharField(max_length=15, choices=SABOR_CHOICES)
+    sabor_2 = models.CharField(max_length=15, choices=SABOR_CHOICES)
 
     def __str__(self):
         return f"{self.sabor_1} / {self.sabor_2 if self.sabor_2 else ''}"
@@ -61,15 +61,15 @@ class Alitas(models.Model):
     
 class Bebida(models.Model):
     SABOR_CHOICES = [
-        ('CCC', 'Coca COla'),
-        ('FNT', 'Fanta'),
-        ('FIO', 'Fiora'),
-        ('SPR', 'Sprite'),
-        ('INK', 'Inka'),
+        ('Coca Cola', 'Coca Cola'),
+        ('Fanta', 'Fanta'),
+        ('Fiora', 'Fiora'),
+        ('Sprite', 'Sprite'),
+        ('Inka', 'Inka'),
     ]
     
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    sabor = models.CharField(max_length=3, choices=SABOR_CHOICES)
+    sabor = models.CharField(max_length=15, choices=SABOR_CHOICES)
 
     def __str__(self):
         return f"{self.sabor_1}"

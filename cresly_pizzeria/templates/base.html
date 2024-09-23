@@ -6,32 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cresly Pizzeria</title>
     <!-- Incluye Bootstrap CSS -->
+     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM2Jv4y0i3tghq9Vj9XG7M/z48f0gnH3roMbw8" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'CSS/base.css' %}">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 
-    {%block styles%}
-
-    {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% block styles %}{% endblock %}
 </head>
-
-
 <body>
     <header>{% include 'components/navbar.html' %}</header>
 
-
     <div class="contenido">
-            {% block content %}
-
-            {% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
+    {% include 'components/modal_login.html' %}
 
-        {% include 'components/footer.html' %}
+    <footer>{% include 'components/footer.html' %}</footer>
 
-        <!-- Incluye Bootstrap JS al final del cuerpo del documento para mejorar el rendimiento de la página -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Incluye Bootstrap JS al final del cuerpo del documento para mejorar el rendimiento de la página -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'JS/login.js' %}"></script>
+    
+
 </body>
 </html>

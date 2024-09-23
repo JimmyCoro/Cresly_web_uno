@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import *
+from . import views
 
 urlpatterns = [
-    path('', inicio, name = 'inicio'),
+    path('', views.inicio, name='inicio'),  # Página principal con el modal
 ]

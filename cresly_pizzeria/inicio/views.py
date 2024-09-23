@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from .views import *
-from usuarios.forms import  ClienteForm
+from django.shortcuts import render
+from usuarios.forms import RegisterForm, LoginForm
 
-# Create your views here.
 def inicio(request):
-    data = {}
-    formulario = ClienteForm()
-    data['formulario'] = formulario
-    return render(request, 'inicio/inicio.html', data)
+    register_form = RegisterForm()
+    login_form = LoginForm()
+    return render(request, 'inicio/inicio.html', {
+        'register_form': register_form,
+        'login_form': login_form
+    })
+

@@ -51,7 +51,7 @@
                   <div class="col-md-6">
                     <p>{{ producto.descripcion }}</p>
                     <h5 class="card-precio">${{ producto.precio }}</h5>
-                    <form method="post" action="{% url 'menu' %}">
+                    <form method="POST" action="{% url 'menu' %}">
                       {% csrf_token %}
                       <input type="hidden" name="producto_id" value="{{ producto.id }}">
                       {% if categoria.nombre_categoria == "Pizzas" %}

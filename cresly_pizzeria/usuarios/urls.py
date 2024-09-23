@@ -1,7 +1,9 @@
 from django.urls import path
-from .views import save_cliente
-
+from . import views
 
 urlpatterns = [
-    path('save_cliente', save_cliente, name='save_cliente')
+    path('login/', views.login, name='login'),
+    path('register/', views.register, name='register'),
+    path('logout/', views.logout_view, name='logout'), 
+
 ]

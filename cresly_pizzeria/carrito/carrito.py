@@ -6,19 +6,33 @@ class Carrito:
         self.session = request.session
         carrito = self.session.get(settings.CART_SESSION_ID)
         if not carrito:
-            # Guardar un carrito vacío en la sesión
             carrito = self.session[settings.CART_SESSION_ID] = {}
         self.carrito = carrito
 
-    def agregar(self, producto, cantidad=1, actualizar_cantidad=False):
+    def agregar(self, producto, cantidad=1, sabor_1=None, sabor_2=None, actualizar_cantidad=False):
+        # Crear una clave única basada en el ID del producto y los sabores
         producto_id = str(producto.id)
-        if producto_id not in self.carrito:
-            self.carrito[producto_id] = {'cantidad': 0, 'precio': str(producto.precio)}
+        clave_producto = f'{producto_id}_{sabor_1 or "N/A"}_{sabor_2 or "N/A"}'
+
+        if clave_producto not in self.carrito:
+            # Añadir el producto con una clave única que incluye los sabores
+            self.carrito[clave_producto] = {
+                'cantidad': 0,
+                'precio': str(producto.precio),
+                'sabor_1': sabor_1,
+                'sabor_2': sabor_2
+            }
 
         if actualizar_cantidad:
-            self.carrito[producto_id]['cantidad'] = cantidad
+            self.carrito[clave_producto]['cantidad'] = cantidad
         else:
-            self.carrito[producto_id]['cantidad'] += cantidad
+            self.carrito[clave_producto]['cantidad'] += cantidad
+
+        # Actualizar los sabores en caso de que se proporcionen
+        if sabor_1 is not None:
+            self.carrito[clave_producto]['sabor_1'] = sabor_1
+        if sabor_2 is not None:
+            self.carrito[clave_producto]['sabor_2'] = sabor_2
 
         self.guardar()
 
@@ -26,26 +40,30 @@ class Carrito:
         self.session[settings.CART_SESSION_ID] = self.carrito
         self.session.modified = True
 
-    def eliminar(self, producto):
+    def eliminar(self, producto, sabor_1=None, sabor_2=None):
         producto_id = str(producto.id)
-        if producto_id in self.carrito:
-            del self.carrito[producto_id]
+        clave_producto = f'{producto_id}_{sabor_1 or "N/A"}_{sabor_2 or "N/A"}'
+        
+        if clave_producto in self.carrito:
+            del self.carrito[clave_producto]
             self.guardar()
+
 
     def limpiar(self):
         self.session[settings.CART_SESSION_ID] = {}
         self.session.modified = True
 
     def __iter__(self):
-        producto_ids = self.carrito.keys()
+        producto_ids = {clave.split('_')[0] for clave in self.carrito.keys()}
         productos = Producto.objects.filter(id__in=producto_ids)
+        
         for producto in productos:
-            self.carrito[str(producto.id)]['producto'] = producto
-
-        for item in self.carrito.values():
-            item['precio'] = float(item['precio'])
-            item['total_precio'] = item['precio'] * item['cantidad']
-            yield item
+            for clave, item in self.carrito.items():
+                if clave.startswith(str(producto.id)):
+                    item['producto'] = producto
+                    item['precio'] = float(item['precio'])
+                    item['total_precio'] = item['precio'] * item['cantidad']
+                    yield item
 
     def __len__(self):
         return sum(item['cantidad'] for item in self.carrito.values())
