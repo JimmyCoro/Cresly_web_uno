@@ -1,95 +1,126 @@
 @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@500&display=swap');
-:root{
-    --color-primario: #AC1F33;
-    --color-primario-hover: #5f0c19;
-    --color-secundario: #009640;
-    --fuente-principal: 'Reem Kufi Fun', sans-serif;
-  }
 
+:root {
+  --color-primario: #AC1F33;
+  --color-primario-hover: #5f0c19;
+  --color-secundario: #009640;
+  --fuente-principal: 'Reem Kufi Fun', sans-serif;
+}
 
+/* Configuración global */
+body {
+  font-family: var(--fuente-principal);
+  margin: 0;
+  padding: 0;
+}
 
-  .card {
-    transition: transform 0.3s ease; 
-    max-height: 300px; 
-    overflow: hidden; 
-    margin-bottom: 1rem; 
-    
-  }
-
-  .card:hover {
-      transform: scale(1.05); 
-  cursor: pointer; 
-    cursor: pointer;
-  }
-
-
-  .card-title  {
-    font-family: var(--fuente-principal);
-    font-weight: bold;
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
-  }
-
-  .card-descripcion {
-    font-family: var(--fuente-principal);
-
-    font-size: 15px;
-    margin: 0;
-    padding: 0;
-  }
-
-  .card-precio{
-    font-family: var(--fuente-principal);
-    font-size: 15px;
-    margin: 0;
-    padding: 0;
-    color: var(--color-secundario)
-  }
-
-  .card-body {
-    padding: 1rem; 
-  }
-  
-  .card-img-top {
-    height: 150px; 
-    object-fit: cover; 
-  }
-  .modal-content {
-    border-radius: 10px; /* Redondea las esquinas del modal */
-  }
-  
-  .product-card img {
-    object-fit: cover;
-    height: 200px; /* Ajusta la altura de la imagen dentro de la tarjeta */
-  }
-  
-  .img-fluid {
-    max-height: 300px; /* Controla la altura máxima de la imagen dentro del modal */
-    margin-bottom: 20px; /* Espacio entre la imagen y el formulario */
-  }
-  
 .container {
   max-width: 1200px;
-  margin: 0 auto; 
-  padding: 0 15px; 
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-.col-2 {
-  position: sticky;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  top: 200px; 
-  height: 100%; 
-  overflow-y: auto; 
-  border-radius: 20px;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2); 
+/* Estilos de tarjetas de producto */
+.card {
+  transition: transform 0.3s ease;
+  max-height: 300px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
 
-  
+.card-body {
+  padding: 1rem;
+}
 
+.card-title {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
+}
+
+.card-descripcion,
+.card-precio {
+  font-size: 15px;
+  margin: 0;
+}
+
+.card-precio {
+  color: var(--color-secundario);
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Animación de aparición de tarjetas */
+.product-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.product-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efecto hover en tarjetas */
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Modal */
+.modal-content {
+  border-radius: px;
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translateY(-30px);
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+}
+
+.img-fluid {
+  max-height: 400px;
+  margin-bottom: 10px;
 }
 
 
-.col-10 {
-  padding-left: 20px; 
+
+/* Fila de categorías con sticky *//* Estilo de la barra de categorías */
+.categorias {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  padding: 10px 0;
+  background-color: var(--color-primario); /* Fondo blanco para la barra de categorías */
+  position: fixed; /* Fija en la parte superior */
+  top: 56px; /* Espacio debajo de la navbar (ajusta según la altura del navbar) */
+  width: 100%; /* Ocupa todo el ancho */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+.nav-link {
+  color: white; 
+}
+
+.nav-link.active {
+  font-weight: bold; 
+  border-bottom: 2px solid white; 
+}
+
+/* Agregar un poco de margen a las secciones */
+h2.section-title {
+  margin-top: 60px; /* Evita que el texto se esconda detrás de la barra de categorías */
+}
+
+/* Animación para las tarjetas de producto */
+.product-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }

@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@500&display=swap');
+
 :root{
     --color-primario: #AC1F33;
     --color-primario-hover: #5f0c19;
     --color-secundario: #009640;
     --fuente-principal: 'Reem Kufi Fun', sans-serif;
+    --fuente-titulos: 'Lilita One', sans-serif;
+
   }
+
 
 
 .contenido {
@@ -170,7 +174,7 @@
 .iconos_footer{
     display: flex;
     justify-content: center;
-    background-color: var(--color-primario-hover);
+
 
 }
 .iconos_footer i{
@@ -181,7 +185,7 @@
 
 
 
-/* */
+/* LOGIN*/
 
 .modal-content{
     background-color: rgba(255, 255, 255, 0.9);
@@ -189,13 +193,106 @@
 }
 
 .modal-header{
-    background-color: var(--color-primario-hover);
+    background-color: var(--color-primario);
     border-radius: 30px 30px 0 0;
-
+    color: white;
 }
-
 
 
 .modal-md {
     max-width: 500px; 
+}
+
+.input-group, .btn-iniciar, .btn-register{
+    width: 80%;
+}
+
+/* Estilo para los botones de las pestañas inactivas */
+.nav-pills .nav-link {
+    border: 2px solid transparent; /* Sin borde cuando está activo */
+    transition: border-color 0.3s ease; /* Transición suave */
+}
+
+.nav-pills .nav-link:not(.active) {
+    border: 2px solid var(--color-primario); /* Cambia el borde de los botones inactivos a verde personalizado */
+    color: var(--color-primario); /* Cambia el color del texto cuando está inactivo */
+}
+
+.nav-pills .nav-link:not(.active):hover {
+    border-color: var(--color-primario); /* Cambia el color del borde al pasar el ratón por encima a un tono más oscuro */
+}
+.nav-pills .nav-link.active {
+    background-color: var(--color-primario); /* Color de fondo personalizado */
+    color: white; /* Color del texto */
+    border-color: var(--color-primario); /* Cambia el color del borde también si lo deseas */
+}
+
+
+/*FOOTER*/
+/* footer.css */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 30px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #f1c40f;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-section .fas {
+    margin-right: 8px;
 }

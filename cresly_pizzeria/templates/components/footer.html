@@ -1,7 +1,28 @@
-<footer class="footer text-center py-3">
-    <div class="info">
-        <!-- Aquí puedes agregar más información si es necesario -->
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section ">
+            <h3>Sobre Nosotros</h3>
+            <p>
+                Somos una empresa comprometida con brindar productos de calidad y un excelente servicio a nuestros clientes.
+            </p>
+        </div>
+        <div class="footer-section links">
+            <h3>Enlaces Rápidos</h3>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="{% url 'menu' %}">Productos</a></li>
+                <li><a href="{% url 'nuestros_locales' %}">Nuestros Locales</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contáctanos</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Calle 123, Ciudad, País</p>
+            <p><i class="fas fa-phone"></i> +123 456 7890</p>
+            <p><i class="fas fa-envelope"></i> info@empresa.com</p>
+        </div>
     </div>
+
     <div class="iconos_footer">
         <a href="https://www.facebook.com/creslypizzeria" target="_blank" aria-label="Facebook">
             <i class="bi bi-facebook"></i>
@@ -16,5 +37,9 @@
             <i class="bi bi-tiktok"></i>
         </a>
     </div>
-    <p>&copy; 2024 Pizzería Cresly. Todos los derechos reservados.</p>
+
+
+    <div class="footer-bottom">
+        <p>&copy; 2024 Cresly Pizzeria | Todos los derechos reservados</p>
+    </div>
 </footer>

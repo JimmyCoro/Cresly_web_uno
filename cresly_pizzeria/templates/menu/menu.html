@@ -6,18 +6,23 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-2 categorias">
-      <ul class="navbar-nav">
+<div class="container mt-5">
+  <!-- Fila para mostrar las categorías como una barra superior -->
+  <div class="row mb-4 ">
+    <div class="col-12">
+      <ul class="nav justify-content-center categorias fixed-top ">
         {% for categoria in categorias %}
-        <li>
+        <li class="nav-item">
           <a class="nav-link" href="#{{ categoria.nombre_categoria }}">{{ categoria.nombre_categoria }}</a>
         </li>
         {% endfor %}
       </ul>
     </div>
-    <div class="col-10">
+  </div>
+
+  <!-- Contenido del menú -->
+  <div class="row">
+    <div class="col-12">
       {% for categoria in categorias %}
       <h2 class="section-title" id="{{ categoria.nombre_categoria }}">{{ categoria.nombre_categoria }}</h2>
       <div class="row">
@@ -35,7 +40,7 @@
 
         <!-- Modal para cada producto -->
         <div class="modal fade" id="detailsModal{{ producto.id }}" tabindex="-1" aria-labelledby="detailsModalLabel{{ producto.id }}" aria-hidden="true">
-          <div class="modal-dialog modal-lg"> <!-- Cambiado a modal-lg para un modal más grande -->
+          <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="detailsModalLabel{{ producto.id }}">Detalles de {{ producto.nombre_producto }}</h5>
@@ -43,11 +48,9 @@
               </div>
               <div class="modal-body">
                 <div class="row">
-                  <!-- Columna para la imagen del producto -->
                   <div class="col-md-6">
                     <img src="{{ producto.foto.url }}" class="img-fluid" alt="{{ producto.nombre_producto }}">
                   </div>
-                  <!-- Columna para el formulario y detalles -->
                   <div class="col-md-6">
                     <p>{{ producto.descripcion }}</p>
                     <h5 class="card-precio">${{ producto.precio }}</h5>
@@ -81,4 +84,48 @@
 
 <!-- Bootstrap JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const secciones = document.querySelectorAll('h2.section-title');
+    const enlacesMenu = document.querySelectorAll('.categorias .nav-link');
+
+    window.addEventListener('scroll', () => {
+      let currentSection = '';
+
+      secciones.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - 100) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      enlacesMenu.forEach((enlace) => {
+        enlace.classList.remove('active');
+        if (enlace.getAttribute('href').substring(1) === currentSection) {
+          enlace.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const productCards = document.querySelectorAll('.product-card');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    productCards.forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>
+
 {% endblock %}

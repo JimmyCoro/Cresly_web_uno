@@ -15,18 +15,25 @@
         <!-- Primer ítem del carrusel con un video -->
         <div class="carousel-item active">
             <video class="d-block w-100" autoplay loop muted>
-                <source src="{% static 'VIDEO/portada3.mp4' %}" type="video/mp4">
-                Tu navegador no soporta el elemento de video.
+                <source src="{% static 'VIDEO/portada1.mp4' %}" type="video/mp4">
             </video>
             <div class="carousel-caption d-none d-md-block">
-                <a href="#" class= "btn-ordenar">
+                <a href="{% url 'menu' %}" class= "btn-ordenar">
                   <img src="{% static 'IMG/inicio/ordenaya1.png' %}" alt="" width="200px">
                 </a>
             </div>
+            
         </div>
         <div class="carousel-item">
             <video class="d-block w-100" autoplay loop muted>
                 <source src="{% static 'VIDEO/portada2.mp4' %}" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+
+        </div>
+        <div class="carousel-item">
+            <video class="d-block w-100" autoplay loop muted>
+                <source src="{% static 'VIDEO/portada3.mp4' %}" type="video/mp4">
                 Tu navegador no soporta el elemento de video.
             </video>
             <div class="carousel-caption d-none d-md-block">
@@ -35,7 +42,6 @@
               </a>
             </div>
         </div>
-        <!-- Puedes agregar más ítems de carrusel aquí -->
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -49,7 +55,9 @@
 
 <div class="row">
 
-  
+    <div class="container-fluid p-0 mt-5"> <!-- Elimina padding para que la imagen ocupe todo el ancho -->
+        <img src="{% static 'IMG/inicio/baner2.png' %}" alt="Descripción de la imagen" class="img-fluid">
+    </div>
 
 
 </div>
