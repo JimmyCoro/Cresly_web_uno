@@ -1,0 +1,29 @@
+.carousel-item {
+    position: relative;
+}
+
+/* Estilo para el botón */
+.btn-ordenar {
+    position: absolute;
+    bottom: 180%; /* Ajusta la distancia desde la parte inferior */
+    right: 40%;
+    padding: 10px; /* Espaciado interno */
+}
+
+.btn-ordenar:hover {
+    cursor: pointer;
+    
+}
+
+
+/* Asegúrate de que la imagen dentro del botón se ajuste */
+.btn-ordenar img {
+    max-width: 90%; /* Se adapta al tamaño del contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+}
+
+@media (max-width: 768px) {
+    .btn-ordenar {
+        bottom: 10%; /* Ajusta la distancia desde la parte inferior */
+    }
+}

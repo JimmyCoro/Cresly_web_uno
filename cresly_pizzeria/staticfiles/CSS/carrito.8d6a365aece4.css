@@ -1,0 +1,11 @@
+.badge-info {
+    background-color: #17a2b8; /* Color para el estado del pedido */
+}
+
+.card {
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+h5 {
+    color: #007bff; /* Color azul para los nombres de productos */
+}

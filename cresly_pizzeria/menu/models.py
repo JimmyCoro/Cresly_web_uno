@@ -74,4 +74,16 @@ class Bebida(models.Model):
     def __str__(self):
         return f"{self.sabor_1}"
     
-    
+
+# models.py
+
+class ComboFamiliar(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    pizza_sabor_1 = models.CharField(max_length=15, choices=Pizza.SABOR_CHOICES)
+    pizza_sabor_2 = models.CharField(max_length=15, choices=Pizza.SABOR_CHOICES)
+    alita_sabor_1 = models.CharField(max_length=15, choices=Alitas.SABOR_CHOICES)
+    alita_sabor_2 = models.CharField(max_length=15, choices=Alitas.SABOR_CHOICES)
+    bebida_sabor = models.CharField(max_length=15, choices=Bebida.SABOR_CHOICES)
+
+    def __str__(self):
+        return f"Combo: {self.producto.nombre_producto}, Pizzas: {self.pizza_sabor_1} / {self.pizza_sabor_2}, Alitas: {self.alita_sabor_1} / {self.alita_sabor_2}, Bebida: {self.bebida_sabor}"

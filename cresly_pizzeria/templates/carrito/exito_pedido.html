@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'CSS/carrito.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4" style="color: #2c3e50;">¡Gracias por tu compra!</h2>
+    <p class="text-center" style="color: #34495e;">Tu pedido ha sido procesado exitosamente. A continuación, se muestra un resumen de tu pedido:</p>
+    
+    {% if pedido %}
+        <!-- Estado del Pedido -->
+        <div class="text-center mb-4">
+            <span class="badge badge-lg {% if pedido.estado == 'recibido' %}bg-secondary{% elif pedido.estado == 'en proceso' %}bg-warning text-dark{% elif pedido.estado == 'listo' %}bg-success{% else %}bg-info{% endif %}">
+                <strong>Estado del Pedido:</strong> {{ pedido.estado }}
+            </span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #2980b9;">Resumen de Pedido</h5>
+                        <p><strong>ID de Pedido:</strong> {{ pedido.id }}</p>
+                        <p><strong>Fecha:</strong> {{ pedido.fecha }}</p>
+                        <p><strong>Total:</strong> ${{ pedido.total }}</p>
+                        <p><strong>Dirección:</strong> {{ pedido.direccion }}</p>
+                        <p><strong>Teléfono:</strong> {{ pedido.telefono }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm border-success">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #27ae60;">Detalles de los Productos</h5>
+                        <ul class="list-group">
+                            {% for detalle in pedido.detalles.all %}
+                                <li class="list-group-item">
+                                    <strong>{{ detalle.cantidad }} {{ detalle.producto.nombre_producto }}</strong>
+                                    {% if detalle.sabor_1 %} ({{ detalle.sabor_1 }}{% if detalle.sabor_2 %}, {{ detalle.sabor_2 }}{% endif %}) {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{% url 'menu' %}" class="btn btn-primary btn-lg">Volver al Menú</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

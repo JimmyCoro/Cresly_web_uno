@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Lilita+One&family=Rubik+Mono+One&display=swap');:root{
+    --color-primario: #AC1F33;
+    --color-primario-hover: #5f0c19;
+    --color-secundario: #009640;
+    --fuente-principal: 'Reem Kufi Fun', sans-serif;
+    --fuente-titulos: "Carter One", system-ui;
+
+  }
+
+
+*{
+    font-family: var(--fuente-principal);
+}
+
+.carousel-item img {
+    height: 400px; /* Cambia la altura según tus necesidades */
+    object-fit: cover; /* Ajusta la imagen para que se mantenga dentro del espacio */
+}
+
+
+.icono{
+    color: black;
+}
+
+.columna1, .columna2{
+    
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2); /* Sombra */
+    border-radius: 15px;
+
+}
+
+a{
+    color: inherit; /* Mantiene el color del texto del entorno */
+    text-decoration: none; /* Quita el subrayado */
+}
+
+.card-title{
+    font-family: var(--fuente-titulos);
+    font-size: 25px;
+}

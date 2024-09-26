@@ -1,5 +1,5 @@
 from django import forms
-from .models import Pizza, Alitas,  Bebida
+from .models import ComboFamiliar, Pizza, Alitas,  Bebida
 
 class PizzaForm(forms.ModelForm):
     class Meta:
@@ -30,3 +30,19 @@ class BebidaForm(forms.ModelForm):
         widgets = {
             'sabor': forms.Select(attrs={'class': 'form-select'}),
 }
+
+
+# forms.py
+
+class ComboFamiliarForm(forms.ModelForm):
+    class Meta:
+        model = ComboFamiliar
+        fields = ['pizza_sabor_1', 'pizza_sabor_2', 'alita_sabor_1', 'alita_sabor_2', 'bebida_sabor']
+        
+        widgets = {
+            'pizza_sabor_1': forms.Select(attrs={'class': 'form-select'}),
+            'pizza_sabor_2': forms.Select(attrs={'class': 'form-select'}),
+            'alita_sabor_1': forms.Select(attrs={'class': 'form-select'}),
+            'alita_sabor_2': forms.Select(attrs={'class': 'form-select'}),
+            'bebida_sabor': forms.Select(attrs={'class': 'form-select'}),
+        }

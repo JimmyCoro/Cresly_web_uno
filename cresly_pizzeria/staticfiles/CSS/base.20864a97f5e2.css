@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@500&display=swap');
+
+:root{
+    --color-primario: #AC1F33;
+    --color-primario-hover: #5f0c19;
+    --color-secundario: #009640;
+    --fuente-principal: 'Reem Kufi Fun', sans-serif;
+    --fuente-titulos: 'Lilita One', sans-serif;
+
+  }
+
+
+
+.contenido {
+    margin-top: 100px;
+}
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
+    background-color: white;
+}
+
+.nav-item {
+    border-radius: 15rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
+    margin-left: 1rem;
+}
+/* Boton Menu */
+
+.nav-menu {
+    background-color: var(--color-primario);
+    border: 2px solid ;
+    border-color: var(--color-primario);
+
+    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease; 
+}
+
+.nav-menu:hover {
+    background-color: var(--color-primario-hover);
+    border-color: var(--color-primario-hover);
+    cursor: pointer; 
+    transform: scale(1.05)
+}
+
+.nav-menu a{
+    color: white;
+    font-family: var(--fuente-principal);
+    font-size: medium;
+    font-weight: bold;}
+
+
+.nav-menu a:hover{
+    color: white;} 
+/* Boton Carrito */
+
+.nav-carrito {
+    border: 3px solid var(--color-primario);
+    color: var(--color-primario);
+    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease, color 0.3s ease; 
+}
+
+
+.nav-carrito:hover {
+    background-color: var(--color-primario-hover);
+    border-color: var(--color-primario-hover);
+    cursor: pointer; 
+    transform: scale(1.05)
+}
+
+.nav-carrito a{
+    color: var(--color-primario);
+    font-family: var(--fuente-principal);
+    font-size: medium;
+    font-weight: bold;
+}
+
+.nav-carrito:hover a, .nav-carrito:hover i{
+    color: white;
+}
+
+
+
+/* Boton Locales*/
+
+
+.nav-locales {
+    background-color: #f3e7e9;
+    border: 3px solid #f3e7e9;
+    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease; 
+}
+
+.nav-locales:hover {
+    background-color: var(--color-primario-hover);
+    border-color: var(--color-primario-hover);
+    cursor: pointer; 
+    transform: scale(1.05)
+}
+
+.nav-locales a{
+    color: var(--color-primario);
+    font-family: var(--fuente-principal);
+    font-size: medium;
+    font-weight: bold;
+    
+}
+
+.nav-locales a:hover{
+    color: white;
+}
+
+/* Boton Inicio*/
+
+
+.nav-inicio {
+    background-color: #f3e7e9;
+    border: 3px solid #f3e7e9;
+    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease; 
+}
+
+.nav-inicio:hover {
+    background-color: var(--color-primario-hover);
+    border-color: var(--color-primario-hover);
+    cursor: pointer; 
+    transform: scale(1.05)
+}
+
+.nav-inicio a{
+    color: var(--color-primario);
+    font-family: var(--fuente-principal);
+    font-size: medium;
+    font-weight: bold;
+}
+
+.nav-inicio a:hover{
+    color: white;
+
+}
+
+/*boton Navbar Hamburguesa*/
+
+.navbar-toggler {
+    border-color: var(--color-primario); /* Quita el borde del botón */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='wheat' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Cambia el color del icono */
+}
+
+/* Cambia el color del icono al pasar el mouse */
+.navbar-toggler:hover .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23035729' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Cambia el color al pasar el mouse */
+}
+
+/* Boton Inicio*/
+.btn-user{
+    background-color: #009640;
+}
+
+.footer{
+    background-color: white;
+    height: 40%;
+    width: 100%;
+    
+}
+
+.iconos_footer{
+    display: flex;
+    justify-content: center;
+
+
+}
+.iconos_footer i{
+    margin: 2rem;
+    font-size: 2rem;
+    color: white;
+}
+
+
+
+/* LOGIN*/
+
+.modal-content{
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+}
+
+.modal-header{
+    background-color: var(--color-primario);
+    border-radius: 30px 30px 0 0;
+    color: white;
+}
+
+
+.modal-md {
+    max-width: 500px; 
+}
+
+.input-group, .btn-iniciar, .btn-register{
+    width: 80%;
+}
+
+/* Estilo para los botones de las pestañas inactivas */
+.nav-pills .nav-link {
+    border: 2px solid transparent; /* Sin borde cuando está activo */
+    transition: border-color 0.3s ease; /* Transición suave */
+}
+
+.nav-pills .nav-link:not(.active) {
+    border: 2px solid var(--color-primario); /* Cambia el borde de los botones inactivos a verde personalizado */
+    color: var(--color-primario); /* Cambia el color del texto cuando está inactivo */
+}
+
+.nav-pills .nav-link:not(.active):hover {
+    border-color: var(--color-primario); /* Cambia el color del borde al pasar el ratón por encima a un tono más oscuro */
+}
+.nav-pills .nav-link.active {
+    background-color: var(--color-primario); /* Color de fondo personalizado */
+    color: white; /* Color del texto */
+    border-color: var(--color-primario); /* Cambia el color del borde también si lo deseas */
+}
+
+
+/*FOOTER*/
+/* footer.css */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 30px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #f1c40f;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-section .fas {
+    margin-right: 8px;
+}
